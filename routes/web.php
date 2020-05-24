@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TheController@index');
+
+Route::get('/pemasukan', 'TheController@pemasukan');
+
+Route::get('/pengeluaran', 'TheController@pengeluaran');
+
+Route::get('/pembagian', 'TheController@pembagian');
+Route::get('/form_pembagian', 'TheController@form_pembagian');
+
+Route::get('/mutasi', 'TheController@mutasi');
+
+Route::get('/bantuan', 'TheController@bantuan');
+
+# sedikit catatan
+/*
+bila salah satu saldo dihapus, maka nilai dari saldo
+sebelumnya akan ditambahkan ke semua saldo dengan nilai sama rata
+*/
