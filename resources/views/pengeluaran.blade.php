@@ -1,22 +1,30 @@
 @extends('layout')
 
 @section('content')
-<form class="container" action="">
+<form class="container" method="POST" action="/pengeluaran">
   <div class="header">Pengeluaran</div>
+  @csrf
   <div class="form-group">
     <div class="form-label">Dari Saldo</div>
-    <select class="form-select">
+    <select class="form-select" name="id">
       <option hidden>- Pilih Saldo -</option>
-      <option value="">Wifi [Wajib]</option>
-      <option value="">Nikah</option>
-      <option value="">Jajan</option>
-      <option value="">Tabungan</option>
-      <option value="">Sedekah</option>
+      @foreach($datas as $data)
+      <option value="{{ $data->id }}">
+        {{ $data->nama }}
+        @if ($data->tipe == 'wajib')
+        [Wajib]
+        @endif
+      </option>
+      @endforeach
     </select>
   </div>
   <div class="form-group">
     <div class="form-label">Nominal Pengeluaran</div>
-    <input class="form-input" type="number" placeholder="Masukan Nominal">
+    <input class="form-input" required name="jumlah" type="number" placeholder="Masukan Nominal">
+  </div>
+  <div class="form-group">
+    <div class="form-label">Keterangan</div>
+    <input class="form-input" required name="keterangan" type="text" placeholder="Masukan Keterangan">
   </div>
   <div class="form-action">
     <button type="submit">KELUARKAN</button>

@@ -18,6 +18,8 @@ class CreateLog extends Migration
             $table->string('nama_saldo');
             $table->string('jenis'); # pengeluaran & pemasukan
             $table->integer('nilai');
+            $table->text('keterangan')->nullable();
+            $table->integer('sisa_total');
             $table->timestamps();
         });
     }

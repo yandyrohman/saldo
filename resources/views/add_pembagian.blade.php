@@ -1,23 +1,27 @@
 @extends('layout')
 
 @section('content')
-<form class="container" action="">
+<form class="container" method="POST" action="/add_pembagian">
   <div class="header">Tambah Saldo</div>
+  @csrf
+  <div class="form-group">
+    <div class="form-label">Nama Saldo</div>
+    <input class="form-input" name="nama" required type="text" placeholder="Masukan Nama">
+  </div>
   <div class="form-group">
     <div class="form-label">Tipe Saldo</div>
-    <select class="form-select">
-      <option hidden>- Pilih Tipe -</option>
-      <option value="">Wajib</option>
-      <option value="">Reguler</option>
+    <select class="form-select" name="tipe" required>
+      <option value="reguler">Reguler</option>
+      <option value="wajib">Wajib</option>
     </select>
   </div>
   <div class="form-group">
-    <div class="form-label">Nilai (%) (Rp)</div>
-    <input class="form-input" type="number" placeholder="Masukan Nilai">
+    <div class="form-label" data-caption="tipe">Nilai (%)</div>
+    <input class="form-input" name="nilai" required type="number" placeholder="Masukan Nilai">
   </div>
   <div class="form-group">
     <div class="form-label">Keterangan</div>
-    <input class="form-input" type="text" placeholder="Masukan Keterangan">
+    <input class="form-input" name="ket" required type="text" placeholder="Masukan Keterangan">
   </div>
   <div class="form-action">
     <button type="submit">BUAT SALDO</button>
@@ -72,4 +76,17 @@
       margin-top: 50px;
     }
 </style>
+@endsection
+
+@section('script')
+<script>
+  $('select[name="tipe"]').on('change', function() {
+    var value = $(this).val()
+    if (value == 'reguler') {
+      $('div[data-caption="tipe"]').html('Nilai (%)')
+    } else {
+      $('div[data-caption="tipe"]').html('Nilai (Rp)')
+    }
+  })
+</script>
 @endsection

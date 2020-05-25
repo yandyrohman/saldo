@@ -5,21 +5,25 @@
   <div class="header">Saldo Anda</div>
   <div class="item-total">
     <div class="item-title">Total Saldo</div>
-    <div class="item-value">Rp 2.000.000</div>
-    <div class="item-subvalue">Rp 1.500.000 reguler</div>
-    <div class="item-subvalue">Rp 500.000 wajib</div>
+    <div class="item-value">Rp {{ $total['all'] }}</div>
+    <div class="item-subvalue">Rp {{ $total['reguler'] }} reguler</div>
+    <div class="item-subvalue">Rp {{ $total['wajib'] }} wajib</div>
   </div>
   <div class="item-head">Rincian :</div>
+  @foreach($datas as $data)
   <div class="item">
-    <div class="item-title">Wifi <span>[Wajib]</span></div>
-    <div class="item-value">Rp 1.000.000</div>
-    <div class="item-etc">Tiap bulan bayar wifi</div>
+    <div class="item-title">
+      {{ $data->nama }}
+      @if($data->tipe == 'wajib') 
+      <span>[{{ $data->nilai }}]</span>
+      @else
+      [{{ $data->nilai }}%]
+      @endif
+    </div>
+    <div class="item-value">Rp {{ $data->jumlah }}</div>
+    <div class="item-etc">{{ $data->ket }}</div>
   </div>
-  <div class="item">
-    <div class="item-title">Nikah [10%]</div>
-    <div class="item-value">Rp 15.000.000</div>
-    <div class="item-etc">Masa depan dengan Sarah</div>
-  </div>
+  @endforeach
 </div>
 @endsection
 

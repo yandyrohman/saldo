@@ -18,7 +18,7 @@ class CreateSaldo extends Migration
             $table->string('nama');
             $table->string('tipe');
             $table->integer('nilai'); # persentase atau nilai real
-            $table->integer('jumlah');
+            $table->bigInteger('jumlah');
             $table->text('ket');
         });
     }

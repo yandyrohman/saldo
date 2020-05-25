@@ -20,10 +20,6 @@
       <i class="material-icons">extension</i>
       <div class="menu-item-title">Pembagian</div>
     </div>
-    <div class="menu-item" data-href="/bantuan">
-      <i class="material-icons">help</i>
-      <div class="menu-item-title">Cara Kerja</div>
-    </div>
   </div>
   <div class="menu-close">
     <i class="material-icons">clear</i>

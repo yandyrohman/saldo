@@ -1,14 +1,19 @@
 @extends('layout')
 
 @section('content')
-<form class="container" action="">
+<form class="container" method="POST" action="/pemasukan">
   <div class="header">Pemasukan</div>
+  @csrf
   <div class="form-group">
     <div class="form-label">Nominal Pemasukan</div>
-    <input class="form-input" type="number" placeholder="Masukan Nominal">
+    <input class="form-input" name="jumlah" required type="number" placeholder="Masukan Nominal">
+  </div>
+  <div class="form-group">
+    <div class="form-label">Keterangan</div>
+    <input class="form-input" name="keterangan" required type="text" placeholder="Masukan Keterangan">
   </div>
   <div class="form-checkbox">
-    <input type="checkbox" id="dana_wajib">
+    <input type="checkbox" name="include_wajib" id="dana_wajib">
     <label class="form-label" for="dana_wajib">Include Dana Wajib</label>
   </div>
   <div class="form-action">
@@ -21,6 +26,7 @@
 <style>
   .form-group {
     border-bottom: 1px solid #888;
+    margin-bottom: 20px;
   }
 
     .form-label {
