@@ -250,6 +250,34 @@ class TheController extends Controller
         ]);
     }
 
+    public function catatan() {
+        $datas = DB::table('catatan')->get();
+        foreach($datas as $data) {
+            $data->created_at = $this->forced_date($data->created_at);
+        }
+        return view('catatan', [
+            'datas' => $datas
+        ]);
+    }
+
+    public function add_catatan() {
+        return view('add_catatan');
+    }
+
+    public function add_catatan_act(Request $req) {
+        DB::table('catatan')->insert([
+            'catatan' => $req->catatan,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        return redirect('/catatan');
+    }
+
+    public function delete_catatan($id) {
+        DB::table('catatan')->where('id', $id)->delete();
+        return redirect('/catatan');
+    }
+
     public function uang($int) {
         return number_format($int, 0, ',', '.');
     }

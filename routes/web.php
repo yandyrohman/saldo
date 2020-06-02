@@ -30,3 +30,7 @@ Route::post('/hapus_pembagian', 'TheController@hapus_pembagian');
 
 Route::get('/mutasi', 'TheController@mutasi');
 
+Route::get('/catatan', 'TheController@catatan');
+Route::get('/add_catatan', 'TheController@add_catatan');
+Route::post('/add_catatan', 'TheController@add_catatan_act');
+Route::get('/delete_catatan/{id}', 'TheController@delete_catatan');

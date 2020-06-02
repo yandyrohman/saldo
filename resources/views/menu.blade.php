@@ -20,6 +20,10 @@
       <i class="material-icons">extension</i>
       <div class="menu-item-title">Pembagian</div>
     </div>
+    <div class="menu-item" data-href="/catatan">
+      <i class="material-icons">note</i>
+      <div class="menu-item-title">Catatan</div>
+    </div>
   </div>
   <div class="menu-close">
     <i class="material-icons">clear</i>
